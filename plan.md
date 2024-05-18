@@ -29,6 +29,7 @@
   - View all tasks in each project (list view, title, due date, priority)
   - Expand a task to view/edit details
   - Delete a todo
+- Use localStorage to store tasks and projects
 
 ## Todo objects
 

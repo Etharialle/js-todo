@@ -1,0 +1,5 @@
+# Basic gitignore
+dist
+node_modules
+.env
+.vscode
