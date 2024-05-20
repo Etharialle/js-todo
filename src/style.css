@@ -1,12 +1,14 @@
 * {
-  margin: 0;
-  padding: 0;
-  /*outline: #00ff00 solid 1px;*/
+    margin: 0;
+    padding: 0;
+    /*outline: #00ff00 solid 1px;*/
 }
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100svh;
-  background-color: darkslategrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100svh;
+    background-color: darkslategrey;
+    flex-direction: column;
+    gap: 1rem;
 }

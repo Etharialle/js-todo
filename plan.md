@@ -71,3 +71,11 @@ class project {
     -   rgb(151, 105, 61)
     -   rgb(52, 135, 155)
     -   rgb(255, 255, 255)
+
+## Work Log
+
+5/20/2024 -
+
+5/19/2024 - Got localstorage working
+
+5/18/2024 - Tested adding new task to default project
