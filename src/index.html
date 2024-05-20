@@ -6,12 +6,95 @@
         <title>Document</title>
     </head>
     <body>
-        <div>
-            <button id="test">Test</button>
-            <button id="project-storage">View Project Storage</button>
-        </div>
-        <div>
-            <button id="remove-task">Remove Task</button>
-        </div>
+        <header>
+            <div class="search">
+                <img src="assets/magnify.svg" class="icons" /><input
+                    type="text"
+                />
+            </div>
+            <div class="user-info">
+                <img src="assets/bell-ring-outline.svg" class="icons" />
+                <img src="assets/otter.png" class="secondary-avatar" />
+                <h3>Relaxed Indigo Otter</h3>
+            </div>
+            <div class="greeting">
+                <img src="assets/otter.png" class="main-avatar" />
+                <div>
+                    <p>Greetings,</p>
+                    <h2>Relaxed Indigo Otter (@Otter)</h2>
+                </div>
+            </div>
+            <div class="greeting distribute">
+                <div class="buttons">New</div>
+                <div class="buttons">Upload</div>
+                <div class="buttons">Share</div>
+            </div>
+        </header>
+        <nav>
+            <div class="title">
+                <img src="assets/view-dashboard.svg" class="icons" />
+                <h1>Dashboard</h1>
+            </div>
+            <div>
+                <ul>
+                    <li><img src="assets/home.svg" class="icons" />Home</li>
+                    <li>
+                        <img
+                            src="assets/card-account-details.svg"
+                            class="icons"
+                        />Profile
+                    </li>
+                    <li>
+                        <img
+                            src="assets/message-reply.svg"
+                            class="icons"
+                        />Messages
+                    </li>
+                    <li>
+                        <img
+                            src="assets/clock-time-three.svg"
+                            class="icons"
+                        />History
+                    </li>
+                    <li>
+                        <img
+                            src="assets/note-multiple.svg"
+                            class="icons"
+                        />Tasks
+                    </li>
+                    <li>
+                        <img
+                            src="assets/account-group.svg"
+                            class="icons"
+                        />Communities
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li><img src="assets/cog.svg" class="icons" />Settings</li>
+                    <li>
+                        <img src="assets/help-box.svg" class="icons" />Support
+                    </li>
+                    <li>
+                        <img
+                            src="assets/shield-check.svg"
+                            class="icons"
+                        />Privacy
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main>
+            <div>
+                <button id="add-project">Add Project</button>
+                <button id="project-storage">View Project Storage</button>
+            </div>
+            <div>
+                <button id="add-task">Add Task</button>
+                <button id="remove-task">Remove Task</button>
+            </div>
+        </main>
+        <footer></footer>
     </body>
 </html>
