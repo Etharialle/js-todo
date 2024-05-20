@@ -1,5 +1,5 @@
 import "./style.css";
-
+//localStorage.clear();
 // this code to be moved to app.js
 // Class definitions
 class Task {
@@ -35,6 +35,8 @@ const defaultProject = new Project(
     "This is the default project where new tasks go if an alternate project isn't chosen",
     []
 );
+//localStorage[defaultProject.title] = defaultProject;
+
 // test code
 //const taskOne = new Task(
 //    "first task",
@@ -57,14 +59,31 @@ function getNewTaskDetails() {
         0,
         "test",
         0,
-        "default",
+        "Default",
     ];
     console.log(newTaskArray);
     return newTaskArray;
 }
 function addTaskToProject(addedTask) {
-    // start with default project
-    defaultProject.taskList.push(addedTask);
+    if (localStorage[addedTask.project]) {
+        const storageProject = JSON.parse(
+            localStorage.getItem(addedTask.project)
+        );
+        storageProject.taskList.push(addedTask);
+        localStorage[storageProject.title] = JSON.stringify(storageProject);
+    } else {
+        console.log("project doesn't exist, setting project to default");
+        addedTask.project = "Default";
+        if (localStorage[defaultProject.title]) {
+            const storageProject = JSON.parse(
+                localStorage.getItem(defaultProject.title)
+            );
+            storageProject.taskList.push(addedTask);
+            localStorage[storageProject.title] = JSON.stringify(storageProject);
+        }
+        defaultProject.taskList.push(addedTask);
+        localStorage[defaultProject.title] = JSON.stringify(defaultProject);
+    }
 }
 
 const testButton = document.querySelector("#test");
@@ -72,6 +91,11 @@ testButton.addEventListener("click", () => {
     const addedTask = new Task(...getNewTaskDetails());
     addTaskToProject(addedTask);
     console.log(defaultProject);
+});
+
+const projectViewButton = document.querySelector("#project-storage");
+projectViewButton.addEventListener("click", () => {
+    console.log(JSON.parse(localStorage["Default"]));
 });
 
 //taskOne.title = "edited title for task one";
