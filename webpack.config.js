@@ -7,6 +7,7 @@ module.exports = {
         filename: "bundle.js",
         path: path.resolve(__dirname, "dist"),
     },
+    mode: "development",
     module: {
         rules: [
             {
@@ -23,6 +24,12 @@ module.exports = {
             },
         ],
     },
+    //stats: {
+    //    orphanModules: true,
+    //    outputPath: true,
+    //    chunkGroupChildren: true,
+    //    chunkGroups: true,
+    //},
     plugins: [
         new HtmlWebpackPlugin({
             filename: "index.html",
