@@ -25,15 +25,24 @@
                 </div>
             </div>
             <div class="greeting distribute">
-                <div class="buttons">New</div>
-                <div class="buttons">Upload</div>
-                <div class="buttons">Share</div>
+                <div>
+                    <div class="buttons" id="add-task">New Task</div>
+                    <div class="buttons" id="remove-task">Remove Task</div>
+                </div>
+                <div>
+                    <div class="buttons" id="add-project">Add Project</div>
+                    <div class="buttons" id="view-projects">View Projects</div>
+                </div>
             </div>
         </header>
         <nav>
             <div class="title">
-                <img src="assets/view-dashboard.svg" class="icons" />
-                <h1>Dashboard</h1>
+                <img
+                    src="assets/view-dashboard.svg"
+                    class="icons"
+                    id="Test id"
+                />
+                <h1>Task Tracker</h1>
             </div>
             <div>
                 <ul>
@@ -76,7 +85,7 @@
                     <li>
                         <img src="assets/help-box.svg" class="icons" />Support
                     </li>
-                    <li>
+                    <li id="test">
                         <img
                             src="assets/shield-check.svg"
                             class="icons"
@@ -85,16 +94,7 @@
                 </ul>
             </div>
         </nav>
-        <main>
-            <div>
-                <button id="add-project">Add Project</button>
-                <button id="project-storage">View Project Storage</button>
-            </div>
-            <div>
-                <button id="add-task">Add Task</button>
-                <button id="remove-task">Remove Task</button>
-            </div>
-        </main>
+        <main></main>
         <footer></footer>
     </body>
 </html>

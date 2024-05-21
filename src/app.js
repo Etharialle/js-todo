@@ -45,7 +45,6 @@ export function getNewTaskDetails() {
         0,
         "Test Project",
     ];
-    console.log(newTaskArray);
     return newTaskArray;
 }
 export function addTaskToProject(addedTask) {

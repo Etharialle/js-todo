@@ -1,4 +1,5 @@
 import "./style.css";
+import html from "./index.html";
 import * as app from "./app.js";
 
 const addTaskButton = document.querySelector("#add-task");
@@ -6,7 +7,6 @@ addTaskButton.addEventListener("click", () => {
     const addedTask = new app.Task(...app.getNewTaskDetails());
     app.addTaskToProject(addedTask);
     console.log(addedTask);
-    console.log(JSON.parse(localStorage[addedTask.project]));
 });
 
 const addProjectButton = document.querySelector("#add-project");
@@ -17,11 +17,10 @@ addProjectButton.addEventListener("click", () => {
         []
     );
     localStorage[addedProject.title] = JSON.stringify(addedProject);
-    //console.log(addedTask);
     console.log(JSON.parse(localStorage[addedProject.title]));
 });
 
-const projectViewButton = document.querySelector("#project-storage");
+const projectViewButton = document.querySelector("#view-projects");
 projectViewButton.addEventListener("click", () => {
     Object.keys(localStorage).forEach(function (key) {
         console.log(JSON.parse(localStorage.getItem(key)));
@@ -30,5 +29,5 @@ projectViewButton.addEventListener("click", () => {
 
 const removeTaskButton = document.querySelector("#remove-task");
 removeTaskButton.addEventListener("click", () => {
-    app.removeTaskFromProject("Default-3");
+    app.removeTaskFromProject("Test Project-3");
 });

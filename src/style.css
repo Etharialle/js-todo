@@ -115,5 +115,16 @@ li {
     background-color: #1992d4;
     color: white;
     border-radius: 2rem;
-    padding: 0.5rem 2rem;
+    padding: 0.25rem 1rem;
+    margin: 0.5rem 0;
+    border: outset 2px rgb(255, 151, 38);
+}
+.buttons:active {
+    border: inset 2px rgb(255, 151, 38);
+    background-color: rgb(52, 135, 155);
+}
+.buttons:hover {
+    border: inset 2px rgb(255, 151, 38);
+    background-color: rgb(52, 135, 155);
+    cursor: pointer;
 }
