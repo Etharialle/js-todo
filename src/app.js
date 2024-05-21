@@ -24,6 +24,10 @@ export class Project {
         this.description = description; // String
         this.taskList = taskList; // Array of tasks
     }
+    updateProject() {
+        console.log("this is a test");
+        console.log(this);
+    }
 }
 
 export const defaultProject = new Project(

@@ -1,12 +1,17 @@
 import "./style.css";
 import html from "./index.html";
 import * as app from "./app.js";
+import * as dom from "./dom.js";
+
+dom.displayProject(JSON.parse(localStorage["Default"]));
 
 const addTaskButton = document.querySelector("#add-task");
 addTaskButton.addEventListener("click", () => {
     const addedTask = new app.Task(...app.getNewTaskDetails());
     app.addTaskToProject(addedTask);
     console.log(addedTask);
+    const storageProject = JSON.parse(localStorage[addedTask.project]);
+    dom.displayProject(storageProject);
 });
 
 const addProjectButton = document.querySelector("#add-project");
@@ -30,4 +35,19 @@ projectViewButton.addEventListener("click", () => {
 const removeTaskButton = document.querySelector("#remove-task");
 removeTaskButton.addEventListener("click", () => {
     app.removeTaskFromProject("Test Project-3");
+});
+
+const testButton = document.querySelector("#test");
+testButton.addEventListener("click", () => {
+    //get local storage
+    let storageProject = JSON.parse(localStorage["Test Project"]);
+    storageProject = new app.Project(
+        storageProject["title"],
+        storageProject["description"],
+        storageProject["taskList"]
+    );
+    storageProject.updateProject();
+    dom.displayProject(storageProject);
+    //if local storage project.title contains spaces then id = replace with _ else leave
+    dom.createNewTaskDialog();
 });
