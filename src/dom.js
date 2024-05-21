@@ -1,4 +1,5 @@
 import { newElement } from "./helper";
+import * as app from "./app.js";
 import starSrc from "./assets/star-plus-outline.svg";
 import eyeSrc from "./assets/eye-plus-outline.svg";
 import forkSrc from "./assets/source-fork.svg";
@@ -62,6 +63,8 @@ export function createNewTaskDialog() {
     newTaskTitle.type = "text";
     newTaskDescription.type = "text";
     newTaskDueDate.type = "date";
+    const addButton = newElement("button", "buttons", "Add Task");
+    const buttonDiv = newElement("div", "flex-container");
 
     newTaskDialog.appendChild(newTaskDialogHeading);
     newTaskDialog.appendChild(newTaskTitleLabel);
@@ -70,13 +73,22 @@ export function createNewTaskDialog() {
     newTaskDialog.appendChild(newTaskDescription);
     newTaskDialog.appendChild(newTaskDueDateLabel);
     newTaskDialog.appendChild(newTaskDueDate);
-
-    newTaskDialog.appendChild(closeButton);
+    buttonDiv.appendChild(addButton);
+    buttonDiv.appendChild(closeButton);
+    newTaskDialog.appendChild(buttonDiv);
     parentContainer.appendChild(newTaskDialog);
-
     newTaskDialog.showModal();
+
     closeButton.addEventListener("click", () => {
-        console.log("test close");
-        newTaskDialog.close("blah");
+        newTaskDialog.close();
+    });
+    addButton.addEventListener("click", () => {
+        let newTaskArray = [];
+        newTaskArray.push(document.querySelector("#title").value);
+        newTaskArray.push(document.querySelector("#description").value);
+        newTaskArray.push(document.querySelector("#due-date").value);
+        console.log(newTaskArray);
+        const addedTask = new app.Task(...newTaskArray);
+        console.log(addedTask.title);
     });
 }
