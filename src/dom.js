@@ -46,55 +46,58 @@ export function displayProject(storageProject) {
 }
 
 export function createNewTaskDialog() {
+    // create new elements
     const parentContainer = document.querySelector("main");
     const newTaskDialog = newElement("dialog");
     const closeButton = newElement("button", "buttons", "Close");
     const newTaskDialogHeading = newElement("h3", "", "Add New Task");
-
     const newTaskTitle = newElement("input", "", "", "title");
     const newTaskTitleLabel = newElement("label", "", "Task Title");
-    newTaskTitleLabel.htmlFor = "title";
     const newTaskDescription = newElement("input", "", "", "description");
     const newTaskDescriptionLabel = newElement("label", "", "Task Description");
-    newTaskDescriptionLabel.htmlFor = "description";
     const newTaskDueDate = newElement("input", "", "", "due-date");
     const newTaskDueDateLabel = newElement("label", "", "Due Date");
-    newTaskDueDateLabel.htmlFor = "due-date";
     const newTaskPriority = newElement("select", "", "", "priority");
     const newTaskPriorityLabel = newElement("label", "", "Priority");
-    newTaskPriorityLabel.htmlFor = "priority";
+    // Priority dropdown options
     const pZero = newElement("option", "", "P0");
     const pOne = newElement("option", "", "P1");
     const pTwo = newElement("option", "", "P2");
     const pThree = newElement("option", "", "P3");
-    pZero.value = 0;
-    pOne.value = 0;
-    pTwo.value = 0;
-    pThree.value = 0;
+    // end Priority dropdown options
+    const newTaskLabels = newElement("input", "", "", "labels");
+    const newTaskLabelsLabel = newElement("label", "", "Labels");
+    const newTaskStatus = newElement("input", "", "", "status");
+    const newTaskStatusLabel = newElement("label", "", "Status");
+    const newTaskProject = newElement("input", "", "", "project");
+    const newTaskProjectLabel = newElement("label", "", "Project");
+    const addButton = newElement("button", "buttons", "Add Task");
+    const buttonDiv = newElement("div", "flex-container");
 
+    // add for tags to labels
+    newTaskTitleLabel.htmlFor = "title";
+    newTaskDescriptionLabel.htmlFor = "description";
+    newTaskDueDateLabel.htmlFor = "due-date";
+    newTaskPriorityLabel.htmlFor = "priority";
+    newTaskDueDateLabel.htmlFor = "labels";
+    newTaskStatusLabel.htmlFor = "status";
+    newTaskDueDateLabel.htmlFor = "project";
+
+    // set input types
+    newTaskTitle.type = "text";
+    newTaskDescription.type = "text";
+    newTaskDueDate.type = "date";
+
+    pZero.value = 0;
+    pOne.value = 1;
+    pTwo.value = 2;
+    pThree.value = 3;
+
+    // add elements to DOM
     newTaskPriority.appendChild(pZero);
     newTaskPriority.appendChild(pOne);
     newTaskPriority.appendChild(pTwo);
     newTaskPriority.appendChild(pThree);
-
-    const newTaskLabels = newElement("input", "", "", "labels");
-    const newTaskLabelsLabel = newElement("label", "", "Labels");
-    newTaskDueDateLabel.htmlFor = "labels";
-
-    const newTaskStatus = newElement("input", "", "", "status");
-    const newTaskStatusLabel = newElement("label", "", "Status");
-    newTaskStatusLabel.htmlFor = "status";
-
-    const newTaskProject = newElement("input", "", "", "project");
-    const newTaskProjectLabel = newElement("label", "", "Project");
-    newTaskDueDateLabel.htmlFor = "project";
-
-    newTaskTitle.type = "text";
-    newTaskDescription.type = "text";
-    newTaskDueDate.type = "date";
-    const addButton = newElement("button", "buttons", "Add Task");
-    const buttonDiv = newElement("div", "flex-container");
-
     newTaskDialog.appendChild(newTaskDialogHeading);
     newTaskDialog.appendChild(newTaskTitleLabel);
     newTaskDialog.appendChild(newTaskTitle);
@@ -110,13 +113,12 @@ export function createNewTaskDialog() {
     newTaskDialog.appendChild(newTaskStatus);
     newTaskDialog.appendChild(newTaskProjectLabel);
     newTaskDialog.appendChild(newTaskProject);
-
     buttonDiv.appendChild(addButton);
     buttonDiv.appendChild(closeButton);
     newTaskDialog.appendChild(buttonDiv);
     parentContainer.appendChild(newTaskDialog);
-    newTaskDialog.showModal();
 
+    newTaskDialog.showModal();
     closeButton.addEventListener("click", () => {
         newTaskDialog.close();
     });

@@ -74,7 +74,11 @@ class project {
 
 ## Work Log
 
-5/20/2024 -
+5/20/2024
+
+-   Moved class definitions and new task functions to app.js.
+-   Added delete task function
+-   Added add project button
 
 5/19/2024 - Got localstorage working
 
