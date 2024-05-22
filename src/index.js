@@ -4,6 +4,7 @@ import * as app from "./app.js";
 import * as dom from "./dom.js";
 
 dom.displayProject(JSON.parse(localStorage["Default"]));
+dom.displayNav();
 
 const addTaskButton = document.querySelector("#add-task");
 addTaskButton.addEventListener("click", () => {
@@ -25,7 +26,8 @@ addProjectButton.addEventListener("click", () => {
 const projectViewButton = document.querySelector("#view-projects");
 projectViewButton.addEventListener("click", () => {
     Object.keys(localStorage).forEach(function (key) {
-        console.log(JSON.parse(localStorage.getItem(key)));
+        const testvar = JSON.parse(localStorage.getItem(key));
+        console.log(testvar);
     });
 });
 

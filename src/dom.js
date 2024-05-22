@@ -3,6 +3,8 @@ import * as app from "./app.js";
 import starSrc from "./assets/star-plus-outline.svg";
 import eyeSrc from "./assets/eye-plus-outline.svg";
 import forkSrc from "./assets/source-fork.svg";
+import folderDeleteSrc from "./assets/folder-remove-outline.svg";
+import folderEditSrc from "./assets/folder-edit-outline.svg";
 
 export function displayProject(storageProject) {
     const parentContainer = document.querySelector("#project-view");
@@ -153,4 +155,18 @@ export function createNewTaskDialog() {
     });
 }
 
-export function displayNav() {}
+export function displayNav() {
+    const projectList = document.querySelector("#project-list");
+    Object.keys(localStorage).forEach(function (key) {
+        const projectTitle = JSON.parse(localStorage.getItem(key))["title"];
+        const listItem = newElement("li", "", projectTitle);
+        const deleteIcon = newElement("img", "icons");
+        const editIcon = newElement("img", "icons");
+        deleteIcon.src = folderDeleteSrc;
+        editIcon.src = folderEditSrc;
+        listItem.appendChild(editIcon);
+        listItem.appendChild(deleteIcon);
+
+        projectList.appendChild(listItem);
+    });
+}
