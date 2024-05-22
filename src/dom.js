@@ -59,16 +59,21 @@ export function createNewTaskDialog() {
     const newTaskDueDateLabel = newElement("label", "", "Due Date");
     const newTaskPriority = newElement("select", "", "", "priority");
     const newTaskPriorityLabel = newElement("label", "", "Priority");
-    // Priority dropdown options
+    // priority dropdown options
     const pZero = newElement("option", "", "P0");
     const pOne = newElement("option", "", "P1");
     const pTwo = newElement("option", "", "P2");
     const pThree = newElement("option", "", "P3");
-    // end Priority dropdown options
+    // end priority dropdown options
     const newTaskLabels = newElement("input", "", "", "labels");
     const newTaskLabelsLabel = newElement("label", "", "Labels");
-    const newTaskStatus = newElement("input", "", "", "status");
+    const newTaskStatus = newElement("select", "", "", "status");
     const newTaskStatusLabel = newElement("label", "", "Status");
+    // status dropdown options
+    const notStarted = newElement("option", "", "Not Started");
+    const inProgress = newElement("option", "", "In Progress");
+    const completed = newElement("option", "", "Completed");
+    // end status dropdown options
     const newTaskProject = newElement("input", "", "", "project");
     const newTaskProjectLabel = newElement("label", "", "Project");
     const addButton = newElement("button", "buttons", "Add Task");
@@ -88,16 +93,23 @@ export function createNewTaskDialog() {
     newTaskDescription.type = "text";
     newTaskDueDate.type = "date";
 
-    pZero.value = 0;
-    pOne.value = 1;
-    pTwo.value = 2;
-    pThree.value = 3;
+    // option value assignments
+    pZero.value = "P0";
+    pOne.value = "P1";
+    pTwo.value = "P2";
+    pThree.value = "P3";
+    notStarted.value = "Not Started";
+    inProgress.value = "In Progress";
+    completed.value = "Completed";
 
     // add elements to DOM
     newTaskPriority.appendChild(pZero);
     newTaskPriority.appendChild(pOne);
     newTaskPriority.appendChild(pTwo);
     newTaskPriority.appendChild(pThree);
+    newTaskStatus.appendChild(notStarted);
+    newTaskStatus.appendChild(inProgress);
+    newTaskStatus.appendChild(completed);
     newTaskDialog.appendChild(newTaskDialogHeading);
     newTaskDialog.appendChild(newTaskTitleLabel);
     newTaskDialog.appendChild(newTaskTitle);
@@ -118,6 +130,7 @@ export function createNewTaskDialog() {
     newTaskDialog.appendChild(buttonDiv);
     parentContainer.appendChild(newTaskDialog);
 
+    // Button logic
     newTaskDialog.showModal();
     closeButton.addEventListener("click", () => {
         newTaskDialog.close();
