@@ -60,6 +60,35 @@ export function createNewTaskDialog() {
     const newTaskDueDate = newElement("input", "", "", "due-date");
     const newTaskDueDateLabel = newElement("label", "", "Due Date");
     newTaskDueDateLabel.htmlFor = "due-date";
+    const newTaskPriority = newElement("select", "", "", "priority");
+    const newTaskPriorityLabel = newElement("label", "", "Priority");
+    newTaskPriorityLabel.htmlFor = "priority";
+    const pZero = newElement("option", "", "P0");
+    const pOne = newElement("option", "", "P1");
+    const pTwo = newElement("option", "", "P2");
+    const pThree = newElement("option", "", "P3");
+    pZero.value = 0;
+    pOne.value = 0;
+    pTwo.value = 0;
+    pThree.value = 0;
+
+    newTaskPriority.appendChild(pZero);
+    newTaskPriority.appendChild(pOne);
+    newTaskPriority.appendChild(pTwo);
+    newTaskPriority.appendChild(pThree);
+
+    const newTaskLabels = newElement("input", "", "", "labels");
+    const newTaskLabelsLabel = newElement("label", "", "Labels");
+    newTaskDueDateLabel.htmlFor = "labels";
+
+    const newTaskStatus = newElement("input", "", "", "status");
+    const newTaskStatusLabel = newElement("label", "", "Status");
+    newTaskStatusLabel.htmlFor = "status";
+
+    const newTaskProject = newElement("input", "", "", "project");
+    const newTaskProjectLabel = newElement("label", "", "Project");
+    newTaskDueDateLabel.htmlFor = "project";
+
     newTaskTitle.type = "text";
     newTaskDescription.type = "text";
     newTaskDueDate.type = "date";
@@ -73,6 +102,15 @@ export function createNewTaskDialog() {
     newTaskDialog.appendChild(newTaskDescription);
     newTaskDialog.appendChild(newTaskDueDateLabel);
     newTaskDialog.appendChild(newTaskDueDate);
+    newTaskDialog.appendChild(newTaskPriorityLabel);
+    newTaskDialog.appendChild(newTaskPriority);
+    newTaskDialog.appendChild(newTaskLabelsLabel);
+    newTaskDialog.appendChild(newTaskLabels);
+    newTaskDialog.appendChild(newTaskStatusLabel);
+    newTaskDialog.appendChild(newTaskStatus);
+    newTaskDialog.appendChild(newTaskProjectLabel);
+    newTaskDialog.appendChild(newTaskProject);
+
     buttonDiv.appendChild(addButton);
     buttonDiv.appendChild(closeButton);
     newTaskDialog.appendChild(buttonDiv);
@@ -87,8 +125,15 @@ export function createNewTaskDialog() {
         newTaskArray.push(document.querySelector("#title").value);
         newTaskArray.push(document.querySelector("#description").value);
         newTaskArray.push(document.querySelector("#due-date").value);
-        console.log(newTaskArray);
+        newTaskArray.push(document.querySelector("#priority").value);
+        newTaskArray.push(document.querySelector("#labels").value);
+        newTaskArray.push(document.querySelector("#status").value);
+        newTaskArray.push(document.querySelector("#project").value);
         const addedTask = new app.Task(...newTaskArray);
-        console.log(addedTask.title);
+        app.addTaskToProject(addedTask);
+        console.log(addedTask);
+        const storageProject = JSON.parse(localStorage[addedTask.project]);
+        displayProject(storageProject);
+        newTaskDialog.close();
     });
 }

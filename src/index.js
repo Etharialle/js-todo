@@ -7,11 +7,8 @@ dom.displayProject(JSON.parse(localStorage["Default"]));
 
 const addTaskButton = document.querySelector("#add-task");
 addTaskButton.addEventListener("click", () => {
-    const addedTask = new app.Task(...app.getNewTaskDetails());
-    app.addTaskToProject(addedTask);
-    console.log(addedTask);
-    const storageProject = JSON.parse(localStorage[addedTask.project]);
-    dom.displayProject(storageProject);
+    dom.createNewTaskDialog();
+    //const addedTask = new app.Task(...app.getNewTaskDetails());
 });
 
 const addProjectButton = document.querySelector("#add-project");
@@ -49,5 +46,4 @@ testButton.addEventListener("click", () => {
     storageProject.updateProject();
     dom.displayProject(storageProject);
     //if local storage project.title contains spaces then id = replace with _ else leave
-    dom.createNewTaskDialog();
 });
