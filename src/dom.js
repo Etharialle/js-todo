@@ -152,3 +152,5 @@ export function createNewTaskDialog() {
         newTaskDialog.close();
     });
 }
+
+export function displayNav() {}

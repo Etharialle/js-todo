@@ -83,6 +83,9 @@ nav {
     align-items: start;
     padding: 1rem;
 }
+li > img {
+    float: right;
+}
 
 main {
     background-color: #e2e8f0;
