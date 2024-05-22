@@ -82,12 +82,16 @@ nav {
     gap: 2rem;
     align-items: start;
     padding: 1rem;
+    min-width: 225px;
 }
 li {
-    height: 1.5rem;
+    height: 3rem;
 }
 li img {
     float: right;
+}
+.project-title {
+    display: inline;
 }
 
 main {
@@ -115,6 +119,11 @@ li {
 .icons {
     height: 1.5rem;
     vertical-align: middle;
+}
+.icons:hover,
+.project-title:hover {
+    cursor: pointer;
+    background-color: rgb(255, 151, 38);
 }
 
 .buttons {

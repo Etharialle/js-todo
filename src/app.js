@@ -80,11 +80,22 @@ export function addTaskToProject(addedTask) {
 3) splice array 
 
 */
-export function removeTaskFromProject(taskId) {
+export function removeTaskFromProject(index, task) {
     //taskId is string
     //sample taskId = Default-2
-    const taskIdSplit = taskId.split("-");
-    const storageProject = JSON.parse(localStorage.getItem(taskIdSplit[0]));
-    storageProject.taskList.splice(taskIdSplit[1], 1);
+    //const taskIdSplit = taskId.split("-");
+    const storageProject = JSON.parse(localStorage.getItem(task.project));
+    storageProject["taskList"] = _.sortBy(storageProject["taskList"], [
+        "dueDate",
+    ]);
+    storageProject.taskList.splice(index, 1);
     localStorage[storageProject.title] = JSON.stringify(storageProject);
+}
+
+export function removeProject(projectTitle) {
+    if (localStorage.getItem(projectTitle)) {
+        localStorage.removeItem(projectTitle);
+    } else {
+        console.log("Project doesn't exist");
+    }
 }
