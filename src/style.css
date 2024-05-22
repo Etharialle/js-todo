@@ -83,7 +83,10 @@ nav {
     align-items: start;
     padding: 1rem;
 }
-li > img {
+li {
+    height: 1.5rem;
+}
+li img {
     float: right;
 }
 
