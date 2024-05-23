@@ -55,7 +55,7 @@ export function displayProject(storageProject) {
         completeTaskIcon.src = checkboxSrc;
         cardButtons.appendChild(deleteTaskIcon);
         cardButtons.appendChild(editTaskIcon);
-        cardButtons.appendChild(completeTaskIcon);
+        //cardButtons.appendChild(completeTaskIcon);
         taskCard.appendChild(cardButtons);
 
         if (task["priority"] === "P0") taskCard.className = "card p0";
