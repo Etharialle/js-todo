@@ -32,8 +32,3 @@ projectViewButton.addEventListener("click", () => {
     });
     dom.displayNav();
 });
-
-const removeTaskButton = document.querySelector("#remove-task");
-removeTaskButton.addEventListener("click", () => {
-    app.removeTaskFromProject("Test Project-3");
-});

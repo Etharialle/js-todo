@@ -81,9 +81,7 @@ export function addTaskToProject(addedTask) {
 
 */
 export function removeTaskFromProject(index, task) {
-    //taskId is string
-    //sample taskId = Default-2
-    //const taskIdSplit = taskId.split("-");
+    // make the sortby key a variable so the task can be sorted by date, priority, etc.
     const storageProject = JSON.parse(localStorage.getItem(task.project));
     storageProject["taskList"] = _.sortBy(storageProject["taskList"], [
         "dueDate",

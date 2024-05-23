@@ -56,7 +56,9 @@ export function displayProject(storageProject) {
             createEditTaskDialog(index, task);
         });
         deleteTaskIcon.addEventListener("click", () => {
-            app.removeTaskFromProject();
+            app.removeTaskFromProject(index, task);
+            storageProject = JSON.parse(localStorage[task.project]);
+            displayProject(storageProject);
         });
     }
     parentContainer.appendChild(taskGrid);
