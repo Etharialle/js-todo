@@ -204,3 +204,16 @@ dialog > h3 {
     display: flex;
     justify-content: space-between;
 }
+
+.p0 {
+    border-left: fuchsia solid 0.6rem;
+}
+.p1 {
+    border-left: salmon solid 0.6rem;
+}
+.p2 {
+    border-left: cyan solid 0.6rem;
+}
+.p3 {
+    border-left: lightseagreen solid 0.6rem;
+}

@@ -57,6 +57,12 @@ export function displayProject(storageProject) {
         cardButtons.appendChild(editTaskIcon);
         cardButtons.appendChild(completeTaskIcon);
         taskCard.appendChild(cardButtons);
+
+        if (task["priority"] === "P0") taskCard.className = "card p0";
+        if (task["priority"] === "P1") taskCard.className = "card p1";
+        if (task["priority"] === "P2") taskCard.className = "card p2";
+        if (task["priority"] === "P3") taskCard.className = "card p3";
+
         taskGrid.appendChild(taskCard);
         // add event listners
         editTaskIcon.addEventListener("click", () => {
