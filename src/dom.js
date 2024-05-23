@@ -18,7 +18,14 @@ export function displayProject(storageProject) {
         "dueDate",
     ]);
     console.log(storageProject.taskList);
-    parentContainer.appendChild(projectTitle);
+    if (!storageProject.tasklist) {
+        const emptyProject = newElement("h3", "", "Empty Project");
+        //projectTitle.textContent = projectTitle.textContent + " - No Tasks";
+        parentContainer.appendChild(projectTitle);
+        parentContainer.appendChild(emptyProject);
+    } else {
+        parentContainer.appendChild(projectTitle);
+    }
 
     for (const [index, task] of storageProject["taskList"].entries()) {
         const taskCard = newElement("div", "card border-gradient");
@@ -307,6 +314,66 @@ export function createEditTaskDialog(index, task) {
     });
 }
 
+export function createNewProjectDialog() {
+    // create new elements
+    const parentContainer = document.querySelector("main");
+    const newProjectDialog = newElement("dialog", "", "", "add-project-window");
+    const closeButton = newElement("button", "buttons", "Close");
+    const newProjectDialogHeading = newElement("h3", "", "Add New Project");
+    let newProjectTitle = newElement("input", "", "", "title");
+    const newProjectTitleLabel = newElement("label", "", "Project Title");
+    let newProjectDescription = newElement("input", "", "", "description");
+    const newProjectDescriptionLabel = newElement(
+        "label",
+        "",
+        "Project Description"
+    );
+    const addButton = newElement("button", "buttons", "Add Project");
+    const buttonDiv = newElement("div", "flex-container");
+
+    // add for tags to labels
+    newProjectTitleLabel.htmlFor = "title";
+    newProjectDescriptionLabel.htmlFor = "description";
+
+    // set input types
+    newProjectTitle.type = "text";
+    newProjectDescription.type = "text";
+
+    newProjectDialog.appendChild(newProjectDialogHeading);
+    newProjectDialog.appendChild(newProjectTitleLabel);
+    newProjectDialog.appendChild(newProjectTitle);
+    newProjectDialog.appendChild(newProjectDescriptionLabel);
+    newProjectDialog.appendChild(newProjectDescription);
+
+    buttonDiv.appendChild(addButton);
+    buttonDiv.appendChild(closeButton);
+    newProjectDialog.appendChild(buttonDiv);
+    parentContainer.appendChild(newProjectDialog);
+
+    // Button logic
+    newProjectDialog.showModal();
+    closeButton.addEventListener("click", () => {
+        newProjectDialog.close();
+        if (newProjectDialog.parentNode) {
+            newProjectDialog.parentNode.removeChild(newProjectDialog);
+        }
+    });
+
+    addButton.addEventListener("click", () => {
+        let newProjectArray = [];
+        newProjectArray.push(document.querySelector("#title").value);
+        newProjectArray.push(document.querySelector("#description").value);
+        newProjectArray.push([]);
+        const addedProject = new app.Project(...newProjectArray);
+        localStorage[addedProject.title] = JSON.stringify(addedProject);
+        newProjectDialog.close();
+        if (newProjectDialog.parentNode) {
+            newProjectDialog.parentNode.removeChild(newProjectDialog);
+        }
+        displayNav();
+    });
+}
+
 export function displayNav() {
     const projectList = document.querySelector("#project-list");
     projectList.replaceChildren();
@@ -335,6 +402,19 @@ export function displayNav() {
             if (currentProjectView.textContent === projectTitle) {
                 document.querySelector("#project-view").replaceChildren();
             }
+
+            let storageProject;
+            if (localStorage.Default) {
+                storageProject = JSON.parse(localStorage.Default);
+            } else if (localStorage.length > 0) {
+                storageProject = JSON.parse(
+                    localStorage.getItem(localStorage.key(0))
+                );
+            } else {
+                localStorage.Default = JSON.stringify(app.defaultProject);
+                storageProject = JSON.parse(localStorage.Default);
+            }
+            displayProject(storageProject);
             displayNav();
         });
         pTag.addEventListener("click", () => {

@@ -17,21 +17,21 @@
     -   [x] priority
     -   [x] labels
     -   [x] status
--   [ ] One module for application logic:
+-   [x] One module for application logic:
     -   [x] Creating new tasks
     -   [x] Changing status of tasks
     -   [x] Changing priority of task
     -   [x] Changing labels of tasks
-    -   [ ] Creating new projects
+    -   [x] Creating new projects
 -   [x] One module for DOM manipulation
--   [ ] User interface shall be able to:
+-   [x] User interface shall be able to:
     -   [x] View all projects
     -   [x] View all tasks in each project (list view, title, due date, priority)
     -   [x] Expand a task to view/edit details
     -   [x] Delete a todo
 -   [x] Use localStorage to store tasks and projects
 -   [x] Use modal for adding new tasks
--   [ ] Use modal for adding new projects
+-   [x] Use modal for adding new projects
 -   [x] Use modal for editing tasks
 
 ## Todo objects
